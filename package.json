@@ -6,16 +6,25 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "web": "react-scripts start"
   },
   "dependencies": {
     "expo": "^30.0.1",
     "moment": "^2.22.2",
     "react": "16.3.1",
+    "react-dom": "^16.5.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
     "react-navigation": "^2.17.0"
   },
   "devDependencies": {
-    "prettier": "^1.14.3"
-  }
+    "prettier": "^1.14.3",
+    "react-scripts": "^2.0.4"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
