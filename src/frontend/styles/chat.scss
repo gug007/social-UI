@@ -1,0 +1,199 @@
+$primary-color: #5682a3;
+
+$primary-hover-color: #497799;
+$secondary-hover-color: #f2f6fa;
+
+$primary-text-color: #fff;
+$secondary-text-color: #b9cfe3;
+
+$primary-border-color: #E9EBED;
+
+$icon-size: 18px;
+
+body {
+  font-family: "Open Sans", "Lucida Grande", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
+}
+
+@mixin media($width) {
+  @media (max-width: #{$width}) {
+    @content;
+  }
+}
+
+.chat {
+  %header {
+    padding: 16px 24px;
+    background: $primary-color;
+    color: $primary-text-color;
+    cursor: pointer;
+    &:hover {
+      background: $primary-hover-color;
+    }
+  }
+
+  $height: 870px;
+
+  height: $height;
+  @include media(767px) {
+    height: $height / 2;
+  }
+  border-bottom: 1px solid $primary-border-color;
+
+  %text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .chat-list {
+    height: 100%;
+    .chat-list-header {
+      @extend %header;
+      display: flex;
+      align-items: center;
+
+      i {
+        margin-right: 40px;
+        font-size: $icon-size;
+      }
+
+      .chat-list-header-title {}
+    }
+
+    .chat-list-search-box {
+      padding: 12px;
+      border-left: 1px solid $primary-border-color;
+      border-right: 2px solid $primary-border-color;
+      @include media(767px) {
+        border-right: unset
+      }
+    }
+
+    .list {
+      height: calc(100% - 109px);
+      overflow: auto;
+      border-left: 1px solid $primary-border-color;
+      border-right: 2px solid $primary-border-color;
+      @include media(767px) {
+        border-right: unset
+      }
+
+      .ant-list {
+        .ant-list-item {
+          padding: 7px 16px;
+          cursor: pointer;
+          .ant-list-item-content {
+            overflow: hidden;
+
+            .ant-list-item-meta {
+              overflow: hidden;
+
+              .ant-list-item-meta-content {
+                overflow: hidden;
+                .ant-list-item-meta-title {
+                  @extend %text-ellipsis;
+                }
+
+                .ant-list-item-meta-description {
+                  @extend %text-ellipsis;
+                }
+              }
+            }
+
+            .date {
+              color: #b3b3b3;
+              font-size: .85em;
+            }
+          }
+
+          &:hover {
+            background-color: $secondary-hover-color;
+          }
+        }
+
+        .selected {
+          background-color: $primary-color;
+          &:hover {
+            background-color: $primary-color;
+          }
+          .ant-list-item-content {
+            .ant-list-item-meta {
+              .ant-list-item-meta-content {
+                .ant-list-item-meta-title {
+                  color: $primary-text-color;
+                }
+                .ant-list-item-meta-description {
+                  color: $primary-text-color;
+                }
+              }
+            }
+            .date {
+              color: $primary-text-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .chat-messages {
+    height: 100%;
+    .chat-messages-header {
+      display: flex;
+      justify-content: space-between;
+      overflow: auto;
+
+      .header-user-info {
+        display: flex;
+        align-items: flex-end;
+        flex: 1;
+        @extend %header;
+
+        .header-user-info-title {
+          display: inline-block;
+          font-weight: bold;
+          margin-right: 8px;
+          max-width: 180px;
+          @extend %text-ellipsis;
+        }
+
+        .header-user-info-status {
+          font-size: 13px;
+          color: $secondary-text-color;
+          margin-right: 8px;
+          max-width: 180px;
+          @extend %text-ellipsis;
+        }
+
+        &:hover .header-user-info-status {
+          color: $primary-text-color;
+        }
+      }
+
+      .header-icons {
+        display: flex;
+        padding-left: 0;
+        padding-right: 0;
+        .header-icon {
+          @extend %header;
+          padding-left: 18px;
+          padding-right: 18px;
+          i {
+            font-size: $icon-size;
+          }
+          .anticon-ellipsis {
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+
+    .chat-messages-list {
+      height: calc(100% - 53px);
+      border-right: 1px solid $primary-border-color;
+      @include media(767px) {
+        border-right: unset
+      }
+    }
+  }
+}
